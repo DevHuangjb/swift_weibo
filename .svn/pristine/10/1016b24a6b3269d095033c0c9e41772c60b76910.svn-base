@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		023B6F0AE79282A3C742D41EC423C2E1 /* Pods-SwiftWB-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 450042A4C1BD3BC55C7D6EC50F4AF20C /* Pods-SwiftWB-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F9EC1A5EC9C1AE44C0D9875A9AB4B69 /* QorumLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEEBAF36FFEF56E0046970A296B74F8 /* QorumLogs.swift */; };
+		4734BF0A9304FFE02237590E870EEAAB /* QorumLogs-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 955361E2C470E104D348A35D3298D785 /* QorumLogs-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		49EC4FE1D025D4B07CBA8CCF81918836 /* Pods-SwiftWB-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F26E3FD140C3142558FB36DA9C7C49 /* Pods-SwiftWB-dummy.m */; };
+		A263C1B4FF539F69D27B6BAD9B0D2C75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		AC879514A436BFE62DBD6F1D6A9C6593 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		E25AAC980D6DF0C5B9C56B372C2934F9 /* QorumLogs-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C321C9A5B349C5565C6AC443650FE7B0 /* QorumLogs-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8234E7F13FBB80E9FDEECF0E31452FC6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4092918146E8C6F00F4565534E4540AC;
+			remoteInfo = QorumLogs;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0653381ECCE75CF72B2935725641BE53 /* Pods-SwiftWB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftWB.release.xcconfig"; sourceTree = "<group>"; };
+		19055EBDDBDB38A70FAAB8A7CEF58509 /* Pods-SwiftWB-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftWB-resources.sh"; sourceTree = "<group>"; };
+		1C0273AB34C97A5BB37D203858428808 /* Pods-SwiftWB-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftWB-acknowledgements.plist"; sourceTree = "<group>"; };
+		24707B08766198DB0D66E78211C6CDC0 /* Pods-SwiftWB-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftWB-frameworks.sh"; sourceTree = "<group>"; };
+		26C47A2609F8A98FFF8C4DF86CDCD864 /* Pods-SwiftWB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftWB.debug.xcconfig"; sourceTree = "<group>"; };
+		399734884233AC75397EDEE946513E13 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		450042A4C1BD3BC55C7D6EC50F4AF20C /* Pods-SwiftWB-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftWB-umbrella.h"; sourceTree = "<group>"; };
+		62EE8156B9430DBB628D3DDF4BC8976F /* Pods_SwiftWB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftWB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		955361E2C470E104D348A35D3298D785 /* QorumLogs-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QorumLogs-umbrella.h"; sourceTree = "<group>"; };
+		AF5ACB9D239BCE59387831B0D942E18F /* Pods-SwiftWB.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SwiftWB.modulemap"; sourceTree = "<group>"; };
+		C283E704B7CC033D8114BC269C49D930 /* QorumLogs.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = QorumLogs.modulemap; sourceTree = "<group>"; };
+		C321C9A5B349C5565C6AC443650FE7B0 /* QorumLogs-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "QorumLogs-dummy.m"; sourceTree = "<group>"; };
+		C7A6C30E32D8646489C56663236ACF92 /* QorumLogs-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QorumLogs-prefix.pch"; sourceTree = "<group>"; };
+		CA3D1824299644D5B874C4B502D12B7D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		E2C2294C4FD52AE4CADD7C45018DB460 /* QorumLogs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = QorumLogs.xcconfig; sourceTree = "<group>"; };
+		EAEEBAF36FFEF56E0046970A296B74F8 /* QorumLogs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QorumLogs.swift; sourceTree = "<group>"; };
+		F1F26E3FD140C3142558FB36DA9C7C49 /* Pods-SwiftWB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftWB-dummy.m"; sourceTree = "<group>"; };
+		F7D9A09DC004F5DD429429F26E58346C /* QorumLogs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QorumLogs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC3D387869C151EECFCDD9A17EA7D146 /* Pods-SwiftWB-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftWB-acknowledgements.markdown"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		849F853E50B52C965D6D5FDC4EE15BC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC879514A436BFE62DBD6F1D6A9C6593 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		905A8C32A0C42E84A632D8E534C5D5D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A263C1B4FF539F69D27B6BAD9B0D2C75 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		30AAFB1A590BA98A2E36B469A92F2C87 /* Pods-SwiftWB */ = {
+			isa = PBXGroup;
+			children = (
+				CA3D1824299644D5B874C4B502D12B7D /* Info.plist */,
+				AF5ACB9D239BCE59387831B0D942E18F /* Pods-SwiftWB.modulemap */,
+				FC3D387869C151EECFCDD9A17EA7D146 /* Pods-SwiftWB-acknowledgements.markdown */,
+				1C0273AB34C97A5BB37D203858428808 /* Pods-SwiftWB-acknowledgements.plist */,
+				F1F26E3FD140C3142558FB36DA9C7C49 /* Pods-SwiftWB-dummy.m */,
+				24707B08766198DB0D66E78211C6CDC0 /* Pods-SwiftWB-frameworks.sh */,
+				19055EBDDBDB38A70FAAB8A7CEF58509 /* Pods-SwiftWB-resources.sh */,
+				450042A4C1BD3BC55C7D6EC50F4AF20C /* Pods-SwiftWB-umbrella.h */,
+				26C47A2609F8A98FFF8C4DF86CDCD864 /* Pods-SwiftWB.debug.xcconfig */,
+				0653381ECCE75CF72B2935725641BE53 /* Pods-SwiftWB.release.xcconfig */,
+			);
+			name = "Pods-SwiftWB";
+			path = "Target Support Files/Pods-SwiftWB";
+			sourceTree = "<group>";
+		};
+		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		527B619327F4ED3E23B5AB688CBD97E7 /* QorumLogs */ = {
+			isa = PBXGroup;
+			children = (
+				EAEEBAF36FFEF56E0046970A296B74F8 /* QorumLogs.swift */,
+				A2B6C8E582378B0D936C8FCDB0EB7EB7 /* Support Files */,
+			);
+			path = QorumLogs;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				99C244B5B04E0DA5BC310E7DD2E354D8 /* Pods */,
+				B4F0F135357A7C4582DC78AC85141727 /* Products */,
+				94DCA3CB7B261ECD85FEAE45F4B64DCB /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		94DCA3CB7B261ECD85FEAE45F4B64DCB /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				30AAFB1A590BA98A2E36B469A92F2C87 /* Pods-SwiftWB */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		99C244B5B04E0DA5BC310E7DD2E354D8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				527B619327F4ED3E23B5AB688CBD97E7 /* QorumLogs */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A2B6C8E582378B0D936C8FCDB0EB7EB7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				399734884233AC75397EDEE946513E13 /* Info.plist */,
+				C283E704B7CC033D8114BC269C49D930 /* QorumLogs.modulemap */,
+				E2C2294C4FD52AE4CADD7C45018DB460 /* QorumLogs.xcconfig */,
+				C321C9A5B349C5565C6AC443650FE7B0 /* QorumLogs-dummy.m */,
+				C7A6C30E32D8646489C56663236ACF92 /* QorumLogs-prefix.pch */,
+				955361E2C470E104D348A35D3298D785 /* QorumLogs-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/QorumLogs";
+			sourceTree = "<group>";
+		};
+		B4F0F135357A7C4582DC78AC85141727 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				62EE8156B9430DBB628D3DDF4BC8976F /* Pods_SwiftWB.framework */,
+				F7D9A09DC004F5DD429429F26E58346C /* QorumLogs.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A08465624AD07C66352703961BA7A3B4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4734BF0A9304FFE02237590E870EEAAB /* QorumLogs-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D71A3C88CEB896DEB355BFF8D590EE17 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				023B6F0AE79282A3C742D41EC423C2E1 /* Pods-SwiftWB-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2CB9ADFB16E288E867C43E3FFA0E0758 /* Pods-SwiftWB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E86955B34F9A94EA06926CFD613C7729 /* Build configuration list for PBXNativeTarget "Pods-SwiftWB" */;
+			buildPhases = (
+				B09752BDD6C03C549EA76435A05C6527 /* Sources */,
+				849F853E50B52C965D6D5FDC4EE15BC4 /* Frameworks */,
+				D71A3C88CEB896DEB355BFF8D590EE17 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D23BBA570D0E805480668DDA1B907A9 /* PBXTargetDependency */,
+			);
+			name = "Pods-SwiftWB";
+			productName = "Pods-SwiftWB";
+			productReference = 62EE8156B9430DBB628D3DDF4BC8976F /* Pods_SwiftWB.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4092918146E8C6F00F4565534E4540AC /* QorumLogs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5850B58710A9A16387F7CC7E701EB396 /* Build configuration list for PBXNativeTarget "QorumLogs" */;
+			buildPhases = (
+				572196897127C7A720F5CEB9D8339154 /* Sources */,
+				905A8C32A0C42E84A632D8E534C5D5D7 /* Frameworks */,
+				A08465624AD07C66352703961BA7A3B4 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QorumLogs;
+			productName = QorumLogs;
+			productReference = F7D9A09DC004F5DD429429F26E58346C /* QorumLogs.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = B4F0F135357A7C4582DC78AC85141727 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2CB9ADFB16E288E867C43E3FFA0E0758 /* Pods-SwiftWB */,
+				4092918146E8C6F00F4565534E4540AC /* QorumLogs */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		572196897127C7A720F5CEB9D8339154 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E25AAC980D6DF0C5B9C56B372C2934F9 /* QorumLogs-dummy.m in Sources */,
+				0F9EC1A5EC9C1AE44C0D9875A9AB4B69 /* QorumLogs.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B09752BDD6C03C549EA76435A05C6527 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49EC4FE1D025D4B07CBA8CCF81918836 /* Pods-SwiftWB-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3D23BBA570D0E805480668DDA1B907A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = QorumLogs;
+			target = 4092918146E8C6F00F4565534E4540AC /* QorumLogs */;
+			targetProxy = 8234E7F13FBB80E9FDEECF0E31452FC6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1B8A031491B8AC1FAF399EFE6527C0F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2C2294C4FD52AE4CADD7C45018DB460 /* QorumLogs.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/QorumLogs/QorumLogs-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/QorumLogs/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/QorumLogs/QorumLogs.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = QorumLogs;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		406A066045614028DADD089A740DB7E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26C47A2609F8A98FFF8C4DF86CDCD864 /* Pods-SwiftWB.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SwiftWB/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SwiftWB/Pods-SwiftWB.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SwiftWB;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		47BEF9D903506B003EA5C2B249729489 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		6881B9F3C8C49CF342DF1872AA3F95D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2C2294C4FD52AE4CADD7C45018DB460 /* QorumLogs.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/QorumLogs/QorumLogs-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/QorumLogs/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/QorumLogs/QorumLogs.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = QorumLogs;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AAF678CED40D3499169D10F63CA0719E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FB183866EC33FA57F84792ADB3316A8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0653381ECCE75CF72B2935725641BE53 /* Pods-SwiftWB.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SwiftWB/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SwiftWB/Pods-SwiftWB.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SwiftWB;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47BEF9D903506B003EA5C2B249729489 /* Debug */,
+				AAF678CED40D3499169D10F63CA0719E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5850B58710A9A16387F7CC7E701EB396 /* Build configuration list for PBXNativeTarget "QorumLogs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6881B9F3C8C49CF342DF1872AA3F95D0 /* Debug */,
+				1B8A031491B8AC1FAF399EFE6527C0F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E86955B34F9A94EA06926CFD613C7729 /* Build configuration list for PBXNativeTarget "Pods-SwiftWB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				406A066045614028DADD089A740DB7E3 /* Debug */,
+				FB183866EC33FA57F84792ADB3316A8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

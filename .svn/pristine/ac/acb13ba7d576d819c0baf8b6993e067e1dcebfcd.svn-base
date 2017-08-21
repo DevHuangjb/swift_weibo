@@ -1,0 +1,15 @@
+//
+//  UserAccount.swift
+//  SwiftWB
+//
+//  Created by huangjinbiao on 17/2/20.
+//  Copyright © 2017年 huangjinbiao. All rights reserved.
+//
+
+import UIKit
+
+class UserAccount: NSObject {
+    dynamic var access_token: String = ""
+    dynamic var expires_in: Int = 0
+    dynamic var uid: String = ""
+}

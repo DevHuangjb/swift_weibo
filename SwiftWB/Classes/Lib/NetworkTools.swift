@@ -1,0 +1,49 @@
+//
+//  NetworkTools.swift
+//  SwiftWB
+//
+//  Created by huangjinbiao on 17/2/20.
+//  Copyright © 2017年 huangjinbiao. All rights reserved.
+//
+
+import UIKit
+import AFNetworking
+class NetworkTools: AFHTTPSessionManager {
+    // Swift推荐我们这样编写单例
+    static let shareInstance: NetworkTools = {
+        
+        // 注意: baseURL后面一定更要写上./
+        let baseURL = NSURL(string: "https://api.weibo.com/")!
+        
+        let instance = NetworkTools(baseURL: baseURL as URL, sessionConfiguration: URLSessionConfiguration.default)
+        instance.responseSerializer.acceptableContentTypes = NSSet(objects: "application/json", "text/json", "text/javascript", "text/plain") as? Set
+//        self.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", nil];
+        return instance
+    }()
+    
+    //MARK: - 请求微博数据
+    /*
+         open func get(_ URLString: String, parameters: Any?, progress downloadProgress: ((Progress) -> Swift.Void)?, success: ((URLSessionDataTask, Any?) -> Swift.Void)?, failure: ((URLSessionDataTask?, Error) -> Swift.Void)? = nil) -> URLSessionDataTask?
+     */
+    func loadStatus(since_id: String, max_id: String,finishHandle:@escaping ([[String : Any]]?,NSError?)->()) -> () {
+        // 1.准备路径
+        let path = "2/statuses/home_timeline.json"
+        // 2.准备参数
+        // 2.准备参数
+        let temp = (max_id != "0") ? "\(Int(max_id)! - 1)" : max_id
+        let parameters = ["access_token": UserTools.getAccessToken(), "since_id": since_id, "max_id": temp]
+        
+        get(path, parameters: parameters, progress: nil, success: { (task, data) in
+            // 返回数据给调用者
+            guard let arr = (data as! [String: AnyObject])["statuses"] as? [[String: AnyObject]] else
+            {
+                finishHandle(nil,NSError(domain: "com.ab", code: 1000, userInfo: ["message":"没有微博数据"]))
+                return
+            }
+            finishHandle(arr,nil)
+        }) { (task, error) in
+            let err = error as NSError
+            finishHandle(nil,err)
+        }
+    }
+}

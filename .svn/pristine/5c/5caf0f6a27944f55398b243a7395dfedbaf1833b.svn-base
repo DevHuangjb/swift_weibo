@@ -1,0 +1,161 @@
+//
+//  HomeCell.swift
+//  SwiftWB
+//
+//  Created by huangjinbiao on 17/2/23.
+//  Copyright © 2017年 huangjinbiao. All rights reserved.
+//
+
+import UIKit
+import SDWebImage
+
+class HomeCell: UITableViewCell {
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userIcon: UIImageView!
+    @IBOutlet weak var creatTimeLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var vipIcon: UIImageView!
+    @IBOutlet weak var memberIcon: UIImageView!
+    @IBOutlet weak var widthCons: NSLayoutConstraint!
+    @IBOutlet weak var heightCons: NSLayoutConstraint!
+    @IBOutlet weak var retweetCollectWidthCons: NSLayoutConstraint!
+    @IBOutlet weak var retweeCollectHeightCons: NSLayoutConstraint!
+    
+    @IBOutlet weak var separatorView: UIView!
+    @IBOutlet weak var picCollectionView: PictureView!
+    @IBOutlet weak var retweetContent: UILabel!
+    @IBOutlet weak var retweetPicCollect: PictureView!
+    
+    @IBOutlet weak var retweetContentTopCons: NSLayoutConstraint!
+    @IBOutlet weak var retweetPicTopCons: NSLayoutConstraint!
+    @IBOutlet weak var contentHeightCons: NSLayoutConstraint!
+    
+    var status : Status?{
+        didSet{
+            userNameLabel.text = status?.user?.screen_name
+            let iconUrl = URL(string: status!.user!.profile_image_url!)
+            userIcon.sd_setImage(with: iconUrl)
+            creatTimeLabel.text = status?.created_at
+            contentLabel.text = status?.text
+            contentHeightCons.constant = calculateContentHeight()
+            
+            // 2.设置认证图标
+            if let type = status?.user?.verified_type
+            {
+                var name = ""
+                switch type
+                {
+                case 0:
+                    name = "avatar_vip"
+                case 2, 3, 5:
+                    name = "avatar_enterprise_vip"
+                case 220:
+                    name = "avatar_grassroot"
+                default:
+                    name = ""
+                }
+                vipIcon.image = UIImage(named: name)
+            }
+            
+            // 4.设置会员图标
+            if let rank = status?.user?.mbrank
+            {
+                if rank >= 1 && rank <= 6
+                {
+                    memberIcon.image = UIImage(named: "common_icon_membership_level\(rank)")
+                    userNameLabel.textColor = UIColor.orange
+                }else
+                {
+                    memberIcon.image = nil
+                    userNameLabel.textColor = UIColor.black
+                }
+                
+            }
+            
+            //来源
+            var rest = ""
+            if let sourceStr: NSString = status?.source as NSString?, sourceStr != ""
+            {
+                // 6.1获取从什么地方开始截取
+                let startIndex = sourceStr.range(of: ">").location + 1
+                // 6.2获取截取多长的长度
+                let length = sourceStr.range(of: "<", options: NSString.CompareOptions.backwards).location - startIndex
+                
+                // 6.3截取字符串=
+                rest = sourceStr.substring(with: NSRange(location: startIndex,length: length))
+            }
+            
+            // 5.设置时间
+            creatTimeLabel.text = "刚刚"
+            if let timeStr = status?.created_at
+            {
+                let createDate = DateTool.createDate(timeStr: timeStr, formatStr: "EE MM dd HH:mm:ss Z yyyy")
+                creatTimeLabel.text = DateTool.dateDescription(date: createDate) + "  " + rest
+            }
+            
+            
+            picCollectionView.picArray = status?.thumbnail_pic
+            let (itemSize,collectionSize) = picCollectionView.calculateSize(picArray: status?.thumbnail_pic)
+            picCollectionView.picLayout.itemSize = itemSize
+            widthCons.constant = collectionSize.width
+            heightCons.constant = collectionSize.height
+            
+            //转发内容
+            if status?.retweeted_status == nil{
+                retweetContentTopCons.constant = 0
+                retweetPicTopCons.constant = 0
+                retweetContent.text = ""
+            }else{
+                retweetContentTopCons.constant = 10
+                retweetPicTopCons.constant = 10
+                let retweetName = "@" + (status?.retweeted_status?.user?.screen_name ?? "")
+                retweetContent.text = retweetName + ":" + (status?.retweeted_status?.text ?? "")
+            }
+            
+            retweetPicCollect.picArray = status?.retweeted_status?.thumbnail_pic
+            let (retweetItemSize,retweetPicSize) = retweetPicCollect.calculateSize(picArray: status?.retweeted_status?.thumbnail_pic)
+            retweetPicCollect.picLayout.itemSize = retweetItemSize
+            retweetCollectWidthCons.constant = retweetPicSize.width
+            retweeCollectHeightCons.constant = retweetPicSize.height
+        }
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        selectionStyle = UITableViewCellSelectionStyle.none
+        
+    }
+    
+    class func getCell(tableView : UITableView) -> HomeCell {
+        var cell : HomeCell? = tableView.dequeueReusableCell(withIdentifier: "homeCell") as! HomeCell?
+        guard let tempCell = cell else {
+            cell = Bundle.main.loadNibNamed("HomeCell", owner: self, options: nil)?.first as? HomeCell
+            return cell!
+        }
+        return tempCell
+        
+    }
+    
+    func calculateContentHeight() -> CGFloat {
+        let font:UIFont! = UIFont.systemFont(ofSize: 16)
+        let attributes = [NSFontAttributeName:font]
+        let option = NSStringDrawingOptions.usesLineFragmentOrigin
+        let rect:CGRect = (status?.text!.boundingRect(with: CGSize(width : kScreenW - 20,height:CGFloat(MAXFLOAT)), options: option, attributes: attributes, context: nil))!
+        return rect.size.height
+    }
+    
+    // MARK: - 外部控制方法
+    func calculateRowHeight(status : Status) -> CGFloat
+    {
+        // 1.设置数据
+        self.status = status
+        
+        // 2.跟新UI
+        self.layoutIfNeeded()
+        // 3.返回底部视图最大的Y
+        return separatorView.frame.maxY
+    }
+    
+}
+

@@ -1,0 +1,104 @@
+//
+//  MainViewController.swift
+//  SwiftWB
+//
+//  Created by 林丽君 on 17/2/7.
+//  Copyright © 2017年 huangjinbiao. All rights reserved.
+//
+
+import UIKit
+
+class MainViewController: UITabBarController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tabBar.tintColor = UIColor.orange
+        addControllers()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        addMiddleTabBarButton()
+    }
+    
+    //MARK:- 添加中间tabbar按钮
+    private func addMiddleTabBarButton() -> () {
+        let view = UIView()
+        view.backgroundColor = UIColor.clear
+        view.width = kScreenW/5.0
+        view.height = 50
+        view.centerX = tabBar.centerX
+        view.y = 0
+        tabBar.addSubview(view)
+        
+        let addBtn = UIButton()
+        addBtn.setBackgroundImage(UIImage(named: "tabbar_compose_button"), for: UIControlState.normal)
+        addBtn.setBackgroundImage(UIImage(named: "tabbar_compose_button_highlighted"), for: UIControlState.highlighted)
+        addBtn.setImage(UIImage(named: "tabbar_compose_icon_add"), for: UIControlState.normal)
+        addBtn.setImage(UIImage(named: "tabbar_compose_icon_add_highlighted"), for: UIControlState.highlighted)
+        addBtn.adjustsImageWhenHighlighted = false
+        addBtn.width = 64
+        addBtn.height = 44
+        addBtn.y = 3
+        addBtn.x = 0.5*(view.width - addBtn.width)
+        view.addSubview(addBtn)
+    }
+    
+    //MARK:- 添加一个子控制器
+    private func addChildViewControllerWithName(vcName : String? , title : String? , image : String?) -> () {
+        guard let name = Bundle.main.infoDictionary?["CFBundleExecutable"] as? String else{
+            return
+        }
+        
+        guard let tempVcName = vcName else {
+            return
+        }
+        let vcClass : AnyClass? = NSClassFromString(name + "." + tempVcName)
+        
+        guard let typeCls = vcClass as? UIViewController.Type else
+        {
+            return
+        }
+        
+        // 通过Class创建对象
+        let vc = typeCls.init()
+        vc.title = title
+        
+        if let tempImage = image{
+            vc.tabBarItem.image = UIImage(named: tempImage)
+            vc.tabBarItem.selectedImage = UIImage(named: tempImage + "_highlighted")
+        }
+
+        let nav = UINavigationController(rootViewController: vc)
+        addChildViewController(nav)
+    }
+    
+    //MARK: - 添加子控制器
+    private func addControllers() -> () {
+        guard let path = Bundle.main.path(forResource: "MainVCSettings", ofType: "json", inDirectory: nil) else{
+            return;
+        }
+        
+        guard let test = NSData(contentsOfFile: path) as? Data else{
+            return
+        }
+        
+        do {
+            let json = try JSONSerialization.jsonObject(with: test, options: JSONSerialization.ReadingOptions.mutableContainers) as? [[String:AnyObject]]
+            for item in json! {
+                let vcName = item["vcName"] as? String;
+                let title = item["title"] as? String;
+                let imageName = item["imageName"] as? String;
+                addChildViewControllerWithName(vcName: vcName, title: title, image: imageName)
+            }
+            
+        } catch {
+            addChildViewControllerWithName(vcName: "HomeTableViewController", title: "首页", image: "tabbar_home")
+            addChildViewControllerWithName(vcName: "MessageTableViewController", title: "消息", image: "tabbar_message_center")
+            addChildViewControllerWithName(vcName: "NullViewController", title: "", image: "")
+            addChildViewControllerWithName(vcName: "DiscoverTableViewController", title: "发现", image: "tabbar_discover")
+            addChildViewControllerWithName(vcName: "ProfileTableViewController", title: "我的", image: "tabbar_profile")
+        }
+    }
+}

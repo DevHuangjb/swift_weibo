@@ -1,0 +1,73 @@
+//
+//  MainViewController.swift
+//  SwiftWB
+//
+//  Created by 林丽君 on 17/2/7.
+//  Copyright © 2017年 huangjinbiao. All rights reserved.
+//
+
+import UIKit
+
+class MainViewController: UITabBarController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+
+        
+        self.tabBar.tintColor = UIColor.orange
+        
+        guard let path = Bundle.main.path(forResource: "MainVCSettings", ofType: "json", inDirectory: nil) else{
+            return;
+        }
+        
+        guard let test = NSData(contentsOfFile: path) as? Data else{
+            return
+        }
+        
+        do {
+            let json = try JSONSerialization.jsonObject(with: test, options: JSONSerialization.ReadingOptions.mutableContainers) as? [[String:AnyObject]]
+            for item in json! {
+                let vcName = item["vcName"] as? String;
+                let title = item["title"] as? String;
+                let imageName = item["imageName"] as? String;
+                addChildViewControllerWithName(vcName: vcName, title: title, image: imageName)
+            }
+            
+        } catch {
+            addChildViewControllerWithName(vcName: "HomeTableViewController", title: "首页", image: "tabbar_home")
+            addChildViewControllerWithName(vcName: "MessageTableViewController", title: "消息", image: "tabbar_message_center")
+            addChildViewControllerWithName(vcName: "DiscoverTableViewController", title: "发现", image: "tabbar_discover")
+            addChildViewControllerWithName(vcName: "ProfileTableViewController", title: "我的", image: "tabbar_profile")
+        }
+
+    }
+    
+    func addChildViewControllerWithName(vcName : String? , title : String? , image : String?) -> () {
+        guard let name = Bundle.main.infoDictionary?["CFBundleExecutable"] as? String else{
+            return
+        }
+        
+        guard let tempVcName = vcName else {
+            return
+        }
+        let vcClass : AnyClass? = NSClassFromString(name + "." + tempVcName)
+        
+        guard let typeCls = vcClass as? UIViewController.Type else
+        {
+            return
+        }
+        
+        // 通过Class创建对象
+        let vc = typeCls.init()
+        vc.title = title
+        
+        if let tempImage = image{
+            vc.tabBarItem.image = UIImage(named: tempImage)
+            vc.tabBarItem.selectedImage = UIImage(named: tempImage + "_highlighted")
+        }
+
+        let nav = UINavigationController(rootViewController: vc)
+        addChildViewController(nav)
+    }
+}

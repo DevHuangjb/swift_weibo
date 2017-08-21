@@ -1,0 +1,76 @@
+//
+//  Status.swift
+//  SwiftWB
+//
+//  Created by huangjinbiao on 17/2/23.
+//  Copyright © 2017年 huangjinbiao. All rights reserved.
+//
+
+import UIKit
+
+class Status: NSObject {
+    
+    /// 微博创建时间
+    var created_at: String?
+    
+    /// 字符串型的微博ID
+    var idstr: String?
+    
+    /// 微博信息内容
+    var text: String?
+    
+    /// 微博来源
+    var source: String?
+    
+    /// 微博作者的用户信息
+    var user: User?
+    
+    /// 配图数组
+    var pic_urls: [[String: AnyObject]]?{
+        didSet{
+            // 处理配图URL
+            // 1.从模型中取出配图数组
+            if let picurls = pic_urls
+            {
+                thumbnail_pic = [URL]()
+                bmiddle_pic = [URL]()
+                // 2.遍历配图数组下载图片
+                for dict in picurls
+                {
+                    
+                    // 2.1取出图片的URL字符串
+                    guard let urlStr = dict["thumbnail_pic"] as? String else
+                    {
+                        continue
+                    }
+                    // 2.2根据字符串创建URL
+//                    let url = NSURL(string: urlStr)!
+                    let url = URL(string: urlStr)!
+                    thumbnail_pic?.append(url)
+                    
+                    // 2.3处理大图
+                    let range = urlStr.range(of: "thumbnail")
+                    let middleImage = urlStr.replacingCharacters(in: range!, with: "bmiddle")
+                    bmiddle_pic?.append(URL(string: middleImage)!)
+                }
+//                if thumbnail_pic?.count == 0{
+//                    let random = arc4random_uniform(9)
+//                    MYLOG(message: random + 1)
+//                    for _ in 0...random {
+//                        let url = URL(string: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2474239467,641514426&fm=23&gp=0.jpg")!
+//                        thumbnail_pic?.append(url)
+//                    }
+//                    
+//                }
+            }
+        }
+    }
+    
+    /// 保存所有配图URL
+    var thumbnail_pic: [URL]?
+    /// 保存所有配图大图URL
+    var bmiddle_pic: [URL]?
+    /// 转发微博
+    var retweeted_status: Status?
+
+}

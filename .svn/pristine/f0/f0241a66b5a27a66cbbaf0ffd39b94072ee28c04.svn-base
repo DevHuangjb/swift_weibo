@@ -1,0 +1,60 @@
+//
+//  ScanController.swift
+//  SwiftWB
+//
+//  Created by huangjinbiao on 17/2/14.
+//  Copyright © 2017年 huangjinbiao. All rights reserved.
+//
+
+import UIKit
+
+class ScanController: UIViewController {
+    @IBOutlet weak var scanLineTopCon: NSLayoutConstraint!
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        startAnimation()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        hidesBottomBarWhenPushed = true
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return UIStatusBarStyle.lightContent
+    }
+    
+    
+    func startAnimation() -> () {
+        weak var weakSelf = self
+        UIView.animate(withDuration: 2, animations: {
+            UIView.setAnimationRepeatCount(MAXFLOAT)
+            weakSelf?.scanLineTopCon.constant = 200
+            weakSelf?.view.layoutIfNeeded()
+        }) { (flag) in
+            if flag == true{
+                
+            }
+        }
+    }
+    
+    @IBAction func itemClick(_ sender: UIBarButtonItem) {
+        switch sender.tag {
+        case 0:
+            navigationController?.popViewController(animated: true)
+        default:
+            MYLOG(message: "")
+        }
+    }
+}

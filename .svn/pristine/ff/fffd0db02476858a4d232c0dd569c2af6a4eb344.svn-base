@@ -1,0 +1,23 @@
+//
+//  LoginController.swift
+//  SwiftWB
+//
+//  Created by huangjinbiao on 17/2/17.
+//  Copyright © 2017 huangjinbiao. All rights reserved.
+//
+
+import UIKit
+
+class LoginController: UIViewController {
+    @IBOutlet weak var webView: UIWebView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let urlStr = "https://api.weibo.com/oauth2/authorize?client_id=3558842167&redirect_uri=http://www.520it.com"
+        let url = NSURL(string: urlStr)
+        let request = NSURLRequest(url: url as! URL)
+        webView.loadRequest(request as URLRequest)
+    }
+}
+
+ 

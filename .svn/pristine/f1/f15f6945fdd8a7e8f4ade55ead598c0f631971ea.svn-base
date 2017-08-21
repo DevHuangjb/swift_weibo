@@ -1,0 +1,22 @@
+ [
+  {
+  "vcName": "HomeTableViewController",
+  "title": "首页123",
+  "imageName": "tabbar_home"
+  },
+  {
+  "vcName": "MessageTableViewController",
+  "title": "消息123",
+  "imageName": "tabbar_message_center"
+  },
+  {
+  "vcName": "DiscoverTableViewController",
+  "title": "广场123",
+  "imageName": "tabbar_discover"
+  },
+  {
+  "vcName": "ProfileTableViewController",
+  "title": "我123",
+  "imageName": "tabbar_profile"
+  }
+  ]

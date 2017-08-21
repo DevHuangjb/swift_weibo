@@ -1,0 +1,69 @@
+//
+//  UserTools.swift
+//  SwiftWB
+//
+//  Created by huangjinbiao on 17/2/20.
+//  Copyright © 2017年 huangjinbiao. All rights reserved.
+//
+
+import UIKit
+
+class UserTools: NSObject {
+    static var kDefaults : UserDefaults?
+    static var kUser : UserAccount?
+    
+    
+    override class func initialize(){
+        kDefaults = UserDefaults.standard
+        kUser = UserAccount()
+        
+        var count: UInt32 = 0
+        guard let ivars = class_copyIvarList(kUser?.classForCoder, &count) else {
+            return
+        }
+        for i in 0 ..< count {
+            let ivar = ivars[Int(i)]
+            let name = ivar_getName(ivar)
+            
+            let key = NSString.init(utf8String: name!) as! String
+            
+            if let value = kDefaults?.object(forKey: key) {
+                kUser?.setValue(value, forKey: key)
+            }
+        }
+    }
+    
+    class func setUser(user : UserAccount) -> () {
+        kUser = user
+        var count: UInt32 = 0
+        guard let ivars = class_copyIvarList(kUser?.classForCoder, &count) else {
+            return
+        }
+        for i in 0 ..< count {
+            let ivar = ivars[Int(i)]
+            let name = ivar_getName(ivar)
+            
+            let key = NSString.init(utf8String: name!) as! String
+            
+            if let value = kUser!.value(forKey: key) {
+                kDefaults?.set(value, forKey: key)
+                kDefaults?.synchronize()
+            }
+        }
+    }
+    
+    class func clearUser() -> () {
+        kUser?.access_token = ""
+        kUser?.expires_in = 0
+        kUser?.uid = ""
+        setUser(user: kUser!)
+    }
+    
+    class func getUser() -> UserAccount {
+        return kUser!
+    }
+    
+    class func isLogin() -> Bool {
+        return !(kUser?.uid.endIndex == kUser?.uid.startIndex)
+    }
+}

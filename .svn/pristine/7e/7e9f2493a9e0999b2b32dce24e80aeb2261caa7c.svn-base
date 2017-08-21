@@ -1,0 +1,155 @@
+//
+//  HomeTableViewController.swift
+//  SwiftWB
+//
+//  Created by 林丽君 on 17/2/7.
+//  Copyright © 2017年 huangjinbiao. All rights reserved.
+//
+
+import UIKit
+
+class HomeTableViewController: UITableViewController {
+    
+    var middlePopTableView : UITableView? = nil
+    var titleBtn:TitleButton?
+    var boxView:LHBoxView?
+    var statuses : [Any] = []
+    
+    override func loadView() {
+        let isLogin = UserTools.isLogin()
+        if isLogin {
+            super.loadView()
+            let leftBtn = UIButton()
+            leftBtn.setImage(UIImage(named: "navigationbar_friendattention"), for: UIControlState.normal)
+            leftBtn.setImage(UIImage(named: "navigationbar_friendattention_highlighted"), for: UIControlState.highlighted)
+            leftBtn.sizeToFit()
+            leftBtn.addTarget(self, action: #selector(registerBtnClick(btn:)), for: UIControlEvents.touchUpInside)
+            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
+            
+            let rightBtn = UIButton()
+        
+            rightBtn.setImage(UIImage(named: "navigationbar_pop"), for: UIControlState.normal)
+            rightBtn.setImage(UIImage(named: "navigationbar_pop_highlighted"), for: UIControlState.highlighted)
+            rightBtn.sizeToFit()
+            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
+            rightBtn.addTarget(self, action: #selector(rightBtnClick(btn:)), for: UIControlEvents.touchUpInside)
+            
+            let titleBtn = TitleButton()
+            titleBtn.setTitle(UserTools.getUserName(), for: UIControlState.normal)
+            titleBtn.height = 32
+            navigationItem.titleView = titleBtn
+            self.titleBtn = titleBtn
+            titleBtn.addTarget(self, action: #selector(titleBtnClick(btn:)), for: UIControlEvents.touchUpInside)
+            
+        }else{
+            let homeVisitorView = HomeVisitorView.getView()
+            self.view = homeVisitorView
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: UIBarButtonItemStyle.plain, target: self, action: #selector(HomeTableViewController.registerBtnClick(btn:)))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: UIBarButtonItemStyle.plain, target: self, action: #selector(HomeTableViewController.loginBtnClick(btn:)))
+        }
+        
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = RGBColor(red: 238, green: 238, blue: 238, alpha: 1)
+        loadStatus()
+    }
+    
+    func loadStatus() -> () {
+        NetworkTools.shareInstance.loadStatus { (data, erroe) in
+            self.statuses = Status.mj_objectArray(withKeyValuesArray: data) as Array
+            self.tableView.reloadData()
+        }
+    }
+    
+    @objc func rightBtnClick(btn:UIButton) -> (){
+        let boxView = LHBoxView(locationView: btn, isTop: false, items: ["雷达","扫一扫","打车"], itemSize: CGSize(width: 150, height: 40), block: nil)
+        boxView.layerColor = RGBColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        weak var weakSelf = self
+        boxView.actionBlock = {
+            (index:Int)->() in
+            switch index {
+            case 0:
+                MYLOG(message: 0)
+            case 1:
+                let scanStory = UIStoryboard(name: "ScanController", bundle: nil)
+                let scanVC = scanStory.instantiateInitialViewController()!
+                scanVC.hidesBottomBarWhenPushed = true
+                weakSelf?.navigationController?.pushViewController(scanVC, animated: true)
+            case 2:
+                MYLOG(message: 0)
+            default:
+                MYLOG(message: "default")
+            }
+        }
+        boxView.display()
+    }
+    
+    @objc func titleBtnClick(btn:UIButton) -> (){
+        btn.isSelected = !btn.isSelected
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 150, height: 300))
+        tableView.backgroundColor = UIColor.clear
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.rowHeight = 30
+        let boxView = LHBoxView(loactionView: btn, isTop: false, customView: tableView)
+        boxView.layerColor = RGBColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        weak var weakSelf = self
+        boxView.dismissBlock = {
+            ()->() in
+            weakSelf?.titleBtn?.isSelected = false
+        }
+        middlePopTableView = tableView
+        boxView.display()
+        self.boxView = boxView
+    }
+    
+    func registerBtnClick(btn:UIButton) -> () {
+        UserTools.clearUser()
+    }
+    
+    func loginBtnClick(btn:UIButton) -> () {
+        let vc = LoginController()
+        self.present(vc, animated: true, completion: nil)
+        
+    }
+
+    // MARK: - Table view data source
+
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == middlePopTableView {
+            return 10
+        }
+        return self.statuses.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableView == middlePopTableView {
+            var cell = UITableViewCell()
+            cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.backgroundColor = UIColor.clear
+            cell.textLabel?.text = "\(indexPath.row)"
+            return cell
+        }
+        
+        let homeCell = HomeCell.getCell(tableView: tableView)
+        let status = statuses[indexPath.row] as! Status
+        homeCell.status = status
+        return homeCell
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == middlePopTableView {
+            self.boxView?.dismiss()
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+
+}
